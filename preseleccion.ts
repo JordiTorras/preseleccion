@@ -297,7 +297,7 @@ function DescartarSedesCarga0(sedesIn: Sede[], fecha: Date, nivel: number = 1): 
 */
 function DeterminarPorcentajeCargaXNivel(sedesIn: Sede[], fecha: Date, nivel: number = 1): Sede[] {
     // Si hemos superado el nivel 5 devolvemos la lista de sedes seleccionadas del nivel 5 - Dia
-    if (nivel > 5) return sedesIn;
+    if (nivel > CodigoNivel.Dia) return sedesIn;
 
     //console.log("nivel: ", nivel);
 
@@ -356,7 +356,7 @@ function DeterminarPorcentajeCargaXNivel(sedesIn: Sede[], fecha: Date, nivel: nu
     }
 }
 
-function Etapa3(sedes: Sede[], tipoOrdenacion: CodigoOrdenacion): Sede[] {
+function Etapa3(sedes: Sede[], tipoOrdenacion: CodigoOrdenacion = CodigoOrdenacion.Carga): Sede[] {
     switch (tipoOrdenacion) {
         case CodigoOrdenacion.Proximidad:
             sedes.sort((a: Sede, b: Sede) => a.distancia - b.distancia);
